@@ -6,6 +6,20 @@
 /* ===================================
    CSS VARIABLES
 =================================== */
+#formStatus{
+    margin-top:15px;
+    font-weight:600;
+    text-align:center;
+}
+
+#submitBtn{
+    min-width:180px;
+}
+
+.loading{
+    opacity:.7;
+    cursor:not-allowed;
+}
 
 .top-bar{
     /* background:#3F88C5; */

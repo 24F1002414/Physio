@@ -476,7 +476,7 @@ Book Appointment
 
 </h2>
 
-<form>
+<!-- <form>
 
 <input type="text"
 placeholder="Your Name">
@@ -498,6 +498,45 @@ Send Request
 
 </button>
 
+</form> -->
+<form id="appointmentForm">
+
+    <input type="hidden" name="access_key" value="afa4704f-6dd3-445d-bb65-62498a3c97bf">
+    <input type="hidden" name="subject" value="New Physiotherapy Appointment">
+
+    <input
+        type="text"
+        name="Name"
+        placeholder="Your Name"
+        required
+    >
+
+    <input
+        type="email"
+        name="Email"
+        placeholder="Email"
+        required
+    >
+
+    <input
+        type="tel"
+        name="Phone"
+        placeholder="Phone Number"
+        required
+    >
+
+    <textarea
+        name="Problem"
+        placeholder="Describe Your Problem"
+        required
+    ></textarea>
+
+    <button type="submit" id="submitBtn">
+        Send Request
+    </button>
+
+    <p id="formStatus"></p>
+
 </form>
 
 </section>
@@ -508,11 +547,11 @@ Send Request
 <div class="top-bar">
     <div class="contact-info">
         <a href="tel:+919876543210">
-            <i class="fa-solid fa-phone"></i> +91 98765 43210
+            <i class="fa-solid fa-phone"></i> Will be updated soon
         </a>
 
         <a href="mailto:clinic@example.com">
-            <i class="fa-solid fa-envelope"></i> priya@gmail.com
+            <i class="fa-solid fa-envelope"></i> panchalpriya7878@gmail.com
         </a>
     </div>
 
@@ -540,6 +579,64 @@ Send Request
 AOS.init({
 duration:1000,
 once:true
+});
+
+</script>
+<script>
+
+const form = document.getElementById("appointmentForm");
+const status = document.getElementById("formStatus");
+const button = document.getElementById("submitBtn");
+
+form.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    button.disabled = true;
+    button.classList.add("loading");
+    button.innerHTML =
+    '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+
+    status.innerHTML = "";
+
+    const formData = new FormData(form);
+
+    try{
+
+        const response = await fetch(
+            "https://api.web3forms.com/submit",
+            {
+                method:"POST",
+                body:formData
+            }
+        );
+
+        const result = await response.json();
+
+        if(result.success){
+
+            status.style.color="#16a34a";
+            status.innerHTML="✅ Appointment request sent successfully!";
+
+            form.reset();
+
+        }else{
+
+            throw new Error(result.message);
+
+        }
+
+    }catch(error){
+
+        status.style.color="#dc2626";
+        status.innerHTML="❌ Something went wrong. Please try again.";
+
+    }
+
+    button.disabled = false;
+    button.classList.remove("loading");
+    button.innerHTML = "Send Request";
+
 });
 
 </script>
