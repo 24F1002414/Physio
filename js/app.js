@@ -359,9 +359,9 @@ document.addEventListener("DOMContentLoaded", () => {
             slider.style.transform =
                 `translateX(-${index * 100}%)`;
 
-            slider.style.transition = ".8s";
+            slider.style.transition = "8s";
 
-        }, 4000);
+        }, 8000);
 
     }
 
