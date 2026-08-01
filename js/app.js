@@ -344,24 +344,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setInterval(() => {
 
-            const cards = slider.children;
+    currentSlide++;
 
-            if (cards.length <= 1) return;
+    if (currentSlide >= slides.length) {
+        currentSlide = 0;
+    }
 
-            index++;
+    showSlide(currentSlide);
 
-            if (index >= cards.length) {
-
-                index = 0;
-
-            }
-
-            slider.style.transform =
-                `translateX(-${index * 100}%)`;
-
-            slider.style.transition = "30s";
-
-        }, 30000);
+}, 6000);
 
     }
 
