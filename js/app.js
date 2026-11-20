@@ -493,7 +493,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 await birthdaySong.play();
 
-                playSongBtn.textContent = "🎵 Vibes are Set Priya Mam";
+                playSongBtn.textContent = "🎵 Vibes are Set...";
 
             } catch (error) {
 
