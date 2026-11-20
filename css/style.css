@@ -1845,3 +1845,310 @@ flex-wrap:wrap;
         transform:scale(1);
     }
 }
+
+/* Birthday Celebration */
+
+.birthday-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(10, 20, 40, 0.92);
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.birthday-card {
+    position: relative;
+    z-index: 2;
+    background: white;
+    max-width: 500px;
+    width: 100%;
+    padding: 45px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 60px rgba(0,0,0,0.3);
+    animation: birthdayPop 0.8s ease;
+}
+
+.birthday-card h1 {
+    color: #e84393;
+    font-size: 38px;
+    margin: 15px 0;
+}
+
+.birthday-card h2 {
+    color: #34495e;
+    font-size: 20px;
+}
+
+.birthday-card p {
+    color: #666;
+    line-height: 1.7;
+    margin-top: 20px;
+}
+
+.birthday-cake {
+    font-size: 75px;
+    animation: cakeBounce 1.5s infinite;
+}
+
+.birthday-balloons {
+    font-size: 35px;
+    animation: balloonFloat 2s infinite alternate;
+}
+
+.birthday-emojis {
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.birthday-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    z-index: 5;
+    background: transparent;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    cursor: pointer;
+}
+
+@keyframes birthdayPop {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes cakeBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes balloonFloat {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-15px);
+    }
+}
+
+/* Confetti */
+
+.confetti {
+    position: absolute;
+    top: -20px;
+    width: 10px;
+    height: 15px;
+    animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Birthday Celebration Overlay */
+.birthday-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(35, 27, 25, 0.88);
+    backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    overflow: hidden;
+}
+
+/* Birthday Card */
+.birthday-card {
+    position: relative;
+    width: 90%;
+    max-width: 520px;
+    padding: 45px 35px;
+    text-align: center;
+    border-radius: 25px;
+
+    background: linear-gradient(
+        145deg,
+        #fffaf0,
+        #f5e8d5,
+        #ead9c2
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35),
+        0 0 30px rgba(222, 184, 135, 0.2);
+
+    animation: birthdayAppear 0.8s ease;
+}
+
+/* Main Heading */
+.birthday-card h1 {
+    color: #8b5e3c;
+    font-family: Georgia, serif;
+    font-size: 42px;
+    font-weight: 700;
+    margin: 15px 0;
+    letter-spacing: 1px;
+}
+
+/* Subheading */
+.birthday-card h2 {
+    color: #a87955;
+    font-family: Georgia, serif;
+    font-size: 19px;
+    margin-bottom: 20px;
+}
+
+/* Description */
+.birthday-card p {
+    color: #765b49;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0 auto 20px;
+}
+
+/* Balloons */
+.birthday-balloons {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+/* Cake */
+.birthday-cake {
+    font-size: 65px;
+    animation: cakeBounce 2s infinite ease-in-out;
+}
+
+/* Emojis */
+.birthday-emojis {
+    font-size: 25px;
+    margin: 20px 0;
+}
+
+/* Play Song Button */
+#playSongBtn {
+    background: linear-gradient(135deg, #a87955, #795039);
+    border: none;
+    border-radius: 30px;
+    padding: 12px 28px;
+    color: #fffaf0;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+#playSongBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(121, 80, 57, 0.3);
+}
+
+/* Close Button */
+.birthday-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    z-index: 100001;
+    border: none;
+    background: transparent;
+    color: #fff5e8;
+    font-size: 38px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.birthday-close:hover {
+    color: #e8c18e;
+    transform: rotate(90deg);
+}
+
+/* Confetti */
+.confetti {
+    position: absolute;
+    top: -10px;
+    width: 9px;
+    height: 14px;
+    opacity: 0.9;
+    animation: confettiFall linear forwards;
+    z-index: 100000;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes birthdayAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes cakeBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    .birthday-card {
+        padding: 35px 22px;
+    }
+
+    .birthday-card h1 {
+        font-size: 32px;
+    }
+
+    .birthday-card h2 {
+        font-size: 16px;
+    }
+
+    .birthday-card p {
+        font-size: 14px;
+    }
+}
+
+#birthdaySong {
+    display: none;
+}
+
+#playSongBtn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+}

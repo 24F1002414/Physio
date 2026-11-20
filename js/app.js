@@ -401,3 +401,138 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+/* ==========================================
+   BIRTHDAY CELEBRATION
+========================================== */
+/* ==========================================
+   BIRTHDAY CELEBRATION
+========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const birthdayOverlay = document.getElementById("birthdayOverlay");
+    const closeBirthday = document.getElementById("closeBirthday");
+    const confettiContainer = document.getElementById("confettiContainer");
+    const birthdaySong = document.getElementById("birthdaySong");
+    const playSongBtn = document.getElementById("playSongBtn");
+
+    if (!birthdayOverlay || !closeBirthday || !confettiContainer) {
+        return;
+    }
+
+    let confettiInterval = null;
+
+    // Check birthday using Indian time
+    function checkBirthday() {
+
+        const parts = new Intl.DateTimeFormat("en-IN", {
+            timeZone: "Asia/Kolkata",
+            day: "numeric",
+            month: "numeric"
+        }).formatToParts(new Date());
+
+        const values = {};
+
+        parts.forEach(part => {
+            values[part.type] = Number(part.value);
+        });
+
+        const isBirthday = values.day === 20 && values.month === 11;
+
+        if (isBirthday && birthdayOverlay.dataset.closed !== "true") {
+
+            birthdayOverlay.style.display = "flex";
+
+            if (!confettiInterval) {
+                createConfetti();
+                confettiInterval = setInterval(createConfetti, 800);
+            }
+
+        } else {
+            birthdayOverlay.style.display = "none";
+            stopCelebration();
+        }
+    }
+
+    // Generate confetti
+    function createConfetti() {
+
+        for (let i = 0; i < 8; i++) {
+
+            const confetti = document.createElement("div");
+
+            confetti.className = "confetti";
+            confetti.style.left = Math.random() * 100 + "%";
+
+            confetti.style.backgroundColor = [
+                "#ff4757",
+                "#ffa502",
+                "#2ed573",
+                "#1e90ff",
+                "#e84393"
+            ][Math.floor(Math.random() * 5)];
+
+            confetti.style.animationDuration =
+                (Math.random() * 3 + 2) + "s";
+
+            confettiContainer.appendChild(confetti);
+
+            setTimeout(() => confetti.remove(), 5000);
+        }
+    }
+
+    // Play song only after button click
+    if (playSongBtn && birthdaySong) {
+
+        playSongBtn.style.display = "inline-flex";
+
+        playSongBtn.addEventListener("click", async () => {
+
+            try {
+
+                await birthdaySong.play();
+
+                playSongBtn.textContent = "🎵 Vibes are Set Priya Mam";
+
+            } catch (error) {
+
+                console.error("Audio playback error:", error);
+
+                playSongBtn.textContent = "⚠️ Unable to Play Song";
+
+            }
+        });
+    }
+
+    // Stop celebration
+    function stopCelebration() {
+
+        if (confettiInterval) {
+            clearInterval(confettiInterval);
+            confettiInterval = null;
+        }
+
+        confettiContainer.innerHTML = "";
+
+        if (birthdaySong) {
+            birthdaySong.pause();
+            birthdaySong.currentTime = 0;
+        }
+    }
+
+    // Close birthday popup
+    closeBirthday.addEventListener("click", () => {
+
+        birthdayOverlay.dataset.closed = "true";
+        birthdayOverlay.style.display = "none";
+
+        stopCelebration();
+
+    });
+
+    checkBirthday();
+
+    setInterval(checkBirthday, 30000);
+
+});

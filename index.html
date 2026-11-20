@@ -654,6 +654,46 @@ form.addEventListener("submit", async function(e){
 });
 
 </script>
+<!-- Birthday Celebration -->
+<div id="birthdayOverlay" class="birthday-overlay">
+
+    <button id="closeBirthday" class="birthday-close">
+        &times;
+    </button>
+
+    <div class="birthday-card">
+
+        <div class="birthday-balloons">
+            🎈 🎈 🎈
+        </div>
+
+        <div class="birthday-cake">🎂</div>
+
+        <h1>Happy Birthday!</h1>
+        <h2>Wishing you the happiest birthday, beautiful!</h2>
+
+        <!-- <h2>Wishing You a Wonderful Year Ahead!</h2> -->
+
+        <p>
+            Keep shining, keep smiling, and keep being my favourite kind of beautiful.
+        </p>
+
+        <div class="birthday-emojis">
+            🎉 🎊 🥳 🎁
+        </div>
+        <audio id="birthdaySong" preload="none" loop>
+            <source src="assets/audio/Chura Ke Dil Mera.mp4" type="audio/mp4">
+        </audio>
+
+        <button id="playSongBtn" class="btn btn-primary">
+            🎵 Play  Song
+        </button>
+
+    </div>
+
+    <div id="confettiContainer"></div>
+
+</div>
 
 </body>
 
