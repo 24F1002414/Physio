@@ -2152,3 +2152,66 @@ flex-wrap:wrap;
     position: relative;
     z-index: 10;
 }
+
+.top-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+}
+
+.contact-info a {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    transition: all 0.35s ease;
+
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+/* Slightly different animation timing */
+.contact-info a:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.contact-info a:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* Hover animation */
+.contact-info a:hover {
+    transform: translateY(-6px) scale(1.15) rotate(8deg);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
+    color: #ffb6c1;
+}
+
+/* Floating animation */
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
